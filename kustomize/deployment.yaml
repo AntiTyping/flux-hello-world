@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-cloudbuild
+  labels:
+    app: hello-cloudbuild
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-cloudbuild
+  template:
+    metadata:
+      labels:
+        app: hello-cloudbuild
+    spec:
+      containers:
+      - name: hello-cloudbuild
+        image: us-central1-docker.pkg.dev/k8roku-378303/my-repository/hello-cloudbuild:d4080a7
+        ports:
+        - containerPort: 8080
